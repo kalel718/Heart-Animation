@@ -1,0 +1,32 @@
+body {
+  margin: 0; /* Remove default browser margins - we want full control */
+  height: 100vh; /* Make body take full viewport height for better mouse tracking */
+  background-color: black; /* Dark background makes the hearts pop visually */
+  overflow: hidden; /* Hide scrollbars since hearts might go off-screen */
+}
+
+span {
+  background: url("https://cdn4.iconfinder.com/data/icons/general-office/91/General_Office_54-256.png");
+  width: 100px; /* Default size, but JavaScript will randomize this */
+  height: 100px;
+  position: absolute; /* Needed so we can position hearts anywhere on screen */
+  pointer-events: none; /* Hearts won't interfere with mouse events - important! */
+  background-size: cover; /* Make sure the heart image fills the entire span nicely */
+  left: 50%; /* Start from center horizontally */
+  top: 50%; /* Start from center vertically */
+  transform: translate(-50%, -50%); /* Center the heart properly on its position */
+  animation: animate 2s linear forwards; /* Run our floating animation for 2 seconds */
+}
+
+@keyframes animate {
+  0% {
+    /* Starting state: heart appears at mouse position, fully visible */
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    /* Ending state: heart floats up and fades away */
+    transform: translate(-50%, -500%); /* Move way up (500% of its height) */
+    opacity: 0; /* Fade to invisible for smooth disappearing effect */
+  }
+}
